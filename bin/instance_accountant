@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+# -*- encoding : utf-8 -*-
+
+$LOAD_PATH.unshift 'lib'
+
+require 'rubygems'
+
+require 'instance_accountant/cli'
+
+InstanceAccountant::CLI.start

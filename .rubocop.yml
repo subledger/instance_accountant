@@ -1,0 +1,46 @@
+AlignHash:
+  Enabled: false
+  EnforcedColonStyle: table
+
+AmbiguousOperator:
+  Enabled: false
+
+AmbiguousRegexpLiteral:
+  Enabled: false
+
+AndOr:
+  Enabled: false
+
+CyclomaticComplexity:
+  Max: 9
+
+Documentation:
+  Enabled: false
+
+MethodCalledOnDoEndBlock:
+  Enabled: false
+
+MethodDefParentheses:
+  EnforcedStyle: require_no_parentheses
+
+MethodLength:
+  CountComments: false
+  Max: 30
+
+RescueException:
+  Enabled: false
+
+SingleLineMethods:
+  Enabled: false
+
+SingleSpaceBeforeFirstArg:
+  Enabled: false
+
+SpaceInsideBrackets:
+  Enabled: false
+
+SpaceInsideHashLiteralBraces:
+  EnforcedStyleForEmptyBraces: space
+
+SpaceInsideParens:
+  Enabled: false
