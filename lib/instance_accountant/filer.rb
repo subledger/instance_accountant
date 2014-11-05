@@ -27,7 +27,7 @@ module InstanceAccountant
                         File::RDWR | File::CREAT,
                         0644 ) do |file|
         file.flock File::LOCK_EX
-        file.rewind
+        file.truncate 0
         file.write hour_string
       end
 
