@@ -10,18 +10,20 @@ module InstanceAccountant
     end
 
     def read
-      @time_klass.parse @file_klass.open( @filepath,
-                                          File::RDWR | File::CREAT,
-                                          0644 ) do |file|
+      hour_string = nil
+
+      @file_klass.open( @filepath, 'r' ) do |file|
         file.flock File::LOCK_EX
-        file.read
+        hour_string = file.read
       end
+
+      @time_klass.parse hour_string
     rescue
       nil
     end
 
     def write hour
-      hour_string = hour.to_s
+      hour_string = hour.hour_string
 
       @file_klass.open( @filepath,
                         File::RDWR | File::CREAT,
