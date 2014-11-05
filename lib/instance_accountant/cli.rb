@@ -14,7 +14,7 @@ module InstanceAccountant
     method_option :description,
                   aliases:  :d,
                   required: true,
-                  default:  'instance usage for'
+                  default:  'instance usage for: %'
 
     method_option :reference
 
@@ -22,7 +22,7 @@ module InstanceAccountant
                   aliases:  :c,
                   required: true
     method_option :cost_description,
-                  default: 'cost for'
+                  default: 'instance cost for: %'
 
     method_option :cost_reference
 
@@ -38,7 +38,7 @@ module InstanceAccountant
                   aliases: :p
 
     method_option :price_description,
-                  default: 'price for'
+                  default: 'instnace price for: %'
 
     method_option :price_reference
 
@@ -68,7 +68,7 @@ module InstanceAccountant
 
     SIGNALS = []
 
-    TWENTY_MINUTES = 20 * 60
+    SECONDS_BETWEEN_ATTEMPTS = 10
 
     %w(ABRT ALRM HUP INT STOP TERM QUIT).each do |signal|
       Signal.trap signal do
@@ -96,10 +96,12 @@ module InstanceAccountant
 
     def consider_posting i, options
       Poster.new(options).post(Hour.new, Time.now) if posting_required? i
+    rescue Exception => e
+      STDERR.puts e
     end
 
     def posting_required? i
-      (i % TWENTY_MINUTES).zero? or signal?
+      (i % SECONDS_BETWEEN_ATTEMPTS).zero? or signal?
     end
 
     def consider_exiting
