@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    instance_accountant (0.0.1)
+    instance_accountant (0.0.2)
       subledger (~> 0.7)
       thor (~> 0.19)
 
