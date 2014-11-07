@@ -38,7 +38,7 @@ module InstanceAccountant
                   aliases: :p
 
     method_option :price_description,
-                  default: 'instnace price for: %'
+                  default: 'instance price for: %'
 
     method_option :price_reference
 
