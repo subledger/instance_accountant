@@ -98,6 +98,8 @@ module InstanceAccountant
       Poster.new(options).post(Hour.new, Time.now) if posting_required? i
     rescue Exception => e
       STDERR.puts e
+      STDERR.puts e.backtrace.join( "\n" )
+      STDERR.puts
     end
 
     def posting_required? i
